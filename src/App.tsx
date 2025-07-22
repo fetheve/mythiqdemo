@@ -32,7 +32,7 @@ function App() {
           <div className="space-y-8">
             <div>
               <h1 className="text-3xl font-bold text-white mb-2">Workflow Builder</h1>
-              <p className="text-gray-400">Visual workflow designer for automation and process orchestration</p>
+              <p className="text-gray-400">No-code workflow composer and automation engine</p>
             </div>
             <div className="bg-gray-800 rounded-xl border border-gray-700">
               <div className="p-6">
