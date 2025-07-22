@@ -99,8 +99,8 @@ export default function DeviceManager() {
               <Clock className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-400">{deviceStats.offline}</div>
-              <div className="text-sm text-gray-400">Offline</div>
+              <div className="text-2xl font-bold text-amber-400">{deviceStats.offline}</div>
+              <div className="text-sm text-gray-400">Pending/Offline</div>
             </div>
           </div>
         </div>

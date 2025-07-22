@@ -100,6 +100,17 @@ export const devices: Device[] = [
     lastUpdate: '15 minutes ago',
     firmware: 'v4.2.1',
     connectivity: 45
+  },
+  {
+    id: '6',
+    name: 'Veris Hawkeye H921',
+    type: 'sensor',
+    status: 'offline',
+    health: 0,
+    location: 'Line 2 - Power Monitoring',
+    lastUpdate: 'Pending Installation',
+    firmware: 'v1.0.0',
+    connectivity: 0
   }
 ];
 

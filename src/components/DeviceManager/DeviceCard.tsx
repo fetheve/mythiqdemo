@@ -60,9 +60,9 @@ export default function DeviceCard({ device }: DeviceCardProps) {
         };
       case 'offline':
         return { 
-          statusClass: 'bg-gray-500/10 text-gray-400 border-gray-500/20', 
+          statusClass: 'bg-amber-500/10 text-amber-400 border-amber-500/20', 
           icon: Clock,
-          glow: ''
+          glow: 'hover:shadow-[0_0_25px_rgba(245,158,11,0.3)]'
         };
       default:
         return { 
@@ -74,6 +74,7 @@ export default function DeviceCard({ device }: DeviceCardProps) {
   };
 
   const getHealthColor = (health: number) => {
+    if (health === 0) return 'from-amber-500 to-orange-500';
     if (health >= 90) return 'from-green-500 to-emerald-500';
     if (health >= 70) return 'from-amber-500 to-orange-500';
     return 'from-red-500 to-pink-500';
