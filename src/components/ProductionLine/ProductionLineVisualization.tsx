@@ -16,8 +16,11 @@ import {
   Gauge,
   MoreVertical,
   MapPin,
-  Info
+  Info,
+  Factory,
+  ChevronDown
 } from 'lucide-react';
+import { facilities } from '../../data/mockData';
 
 interface Sensor {
   id: string;
@@ -54,6 +57,7 @@ export default function ProductionLineVisualization() {
   const [selectedWorkCenter, setSelectedWorkCenter] = useState<WorkCenter | null>(null);
   const [showSensorKits, setShowSensorKits] = useState(false);
   const [selectedKit, setSelectedKit] = useState<SensorKit | null>(null);
+  const [selectedFacility, setSelectedFacility] = useState(facilities[0]); // Default to first facility
 
   const workCenters: WorkCenter[] = [
     {
@@ -226,9 +230,35 @@ export default function ProductionLineVisualization() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Production Line Visualization</h1>
-          <p className="text-gray-400">Interactive view of work centers, sensors, and digitalization opportunities</p>
+          <div className="flex items-center space-x-4">
+            <p className="text-gray-400">Interactive view of work centers, sensors, and digitalization opportunities</p>
+            <div className="flex items-center space-x-2">
+              <Factory className="w-4 h-4 text-gray-400" />
+              <span className="text-gray-400 text-sm">Viewing:</span>
+              <span className="text-teal-400 font-medium">{selectedFacility.name}</span>
+            </div>
+          </div>
         </div>
         <div className="flex space-x-3">
+          {/* Factory Selector */}
+          <div className="relative">
+            <select
+              value={selectedFacility.id}
+              onChange={(e) => {
+                const facility = facilities.find(f => f.id === e.target.value);
+                if (facility) setSelectedFacility(facility);
+              }}
+              className="bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none pr-10"
+            >
+              {facilities.map(facility => (
+                <option key={facility.id} value={facility.id}>
+                  {facility.name} - {facility.location}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          </div>
+          
           <button className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
             <Eye className="w-4 h-4" />
             <span>View Mode</span>
@@ -249,7 +279,30 @@ export default function ProductionLineVisualization() {
         <div className="lg:col-span-3">
           <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-semibold text-white">Production Line Layout</h3>
+              <div>
+                <h3 className="text-xl font-semibold text-white">{selectedFacility.name} - Production Line</h3>
+                <div className="flex items-center space-x-4 mt-2">
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">{selectedFacility.location}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className={`w-3 h-3 rounded-full ${
+                      selectedFacility.status === 'operational' ? 'bg-green-400' :
+                      selectedFacility.status === 'maintenance' ? 'bg-amber-400' : 'bg-red-400'
+                    }`}></div>
+                    <span className={`text-sm capitalize ${
+                      selectedFacility.status === 'operational' ? 'text-green-400' :
+                      selectedFacility.status === 'maintenance' ? 'text-amber-400' : 'text-red-400'
+                    }`}>
+                      {selectedFacility.status}
+                    </span>
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    OEE: <span className="text-white font-medium">{selectedFacility.oee}%</span>
+                  </div>
+                </div>
+              </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2 text-sm text-gray-400">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
