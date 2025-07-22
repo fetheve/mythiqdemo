@@ -97,6 +97,132 @@ export default function WorkflowCanvas() {
   const [workflowName, setWorkflowName] = useState('Untitled Workflow');
   const [isRunning, setIsRunning] = useState(false);
 
+  // Initialize with a sample quality control workflow
+  useEffect(() => {
+    const sampleComponents: Component[] = [
+      {
+        id: 'trigger-1',
+        type: 'sensor-trigger',
+        category: 'Triggers',
+        name: 'Sensor Alert',
+        icon: Activity,
+        color: 'bg-orange-600',
+        position: { x: 100, y: 200 },
+        inputs: 0,
+        outputs: 1,
+      },
+      {
+        id: 'data-1',
+        type: 'database',
+        category: 'Data Sources',
+        name: 'Database',
+        icon: Database,
+        color: 'bg-blue-600',
+        position: { x: 300, y: 120 },
+        inputs: 0,
+        outputs: 1,
+      },
+      {
+        id: 'camera-1',
+        type: 'api',
+        category: 'Data Sources',
+        name: 'Camera Feed',
+        icon: Camera,
+        color: 'bg-purple-600',
+        position: { x: 300, y: 280 },
+        inputs: 0,
+        outputs: 1,
+      },
+      {
+        id: 'ai-1',
+        type: 'ai-model',
+        category: 'Processing',
+        name: 'Defect Detection',
+        icon: Bot,
+        color: 'bg-cyan-600',
+        position: { x: 500, y: 200 },
+        inputs: 1,
+        outputs: 1,
+      },
+      {
+        id: 'condition-1',
+        type: 'condition',
+        category: 'Processing',
+        name: 'Quality Check',
+        icon: GitBranch,
+        color: 'bg-yellow-600',
+        position: { x: 700, y: 200 },
+        inputs: 1,
+        outputs: 2,
+      },
+      {
+        id: 'alert-1',
+        type: 'notification',
+        category: 'Actions',
+        name: 'Quality Alert',
+        icon: Bell,
+        color: 'bg-red-600',
+        position: { x: 900, y: 120 },
+        inputs: 1,
+        outputs: 0,
+      },
+      {
+        id: 'dashboard-1',
+        type: 'dashboard',
+        category: 'Actions',
+        name: 'Update Dashboard',
+        icon: Monitor,
+        color: 'bg-indigo-600',
+        position: { x: 900, y: 280 },
+        inputs: 1,
+        outputs: 0,
+      }
+    ];
+
+    const sampleConnections: Connection[] = [
+      {
+        id: 'conn-1',
+        from: { componentId: 'trigger-1', outputIndex: 0 },
+        to: { componentId: 'ai-1', inputIndex: 0 },
+        animated: true
+      },
+      {
+        id: 'conn-2',
+        from: { componentId: 'data-1', outputIndex: 0 },
+        to: { componentId: 'ai-1', inputIndex: 0 },
+        animated: true
+      },
+      {
+        id: 'conn-3',
+        from: { componentId: 'camera-1', outputIndex: 0 },
+        to: { componentId: 'ai-1', inputIndex: 0 },
+        animated: true
+      },
+      {
+        id: 'conn-4',
+        from: { componentId: 'ai-1', outputIndex: 0 },
+        to: { componentId: 'condition-1', inputIndex: 0 },
+        animated: true
+      },
+      {
+        id: 'conn-5',
+        from: { componentId: 'condition-1', outputIndex: 0 },
+        to: { componentId: 'alert-1', inputIndex: 0 },
+        animated: true
+      },
+      {
+        id: 'conn-6',
+        from: { componentId: 'condition-1', outputIndex: 1 },
+        to: { componentId: 'dashboard-1', inputIndex: 0 },
+        animated: true
+      }
+    ];
+
+    setComponents(sampleComponents);
+    setConnections(sampleConnections);
+    setWorkflowName('Quality Control Automation');
+  }, []);
+
   const canvasRef = useRef<HTMLDivElement>(null);
   const gridSize = 20;
 
