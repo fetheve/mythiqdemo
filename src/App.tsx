@@ -7,6 +7,7 @@ import AIManager from './components/AIManager/AIManager';
 import AgentBuilder from './components/AgentBuilder/AgentBuilder';
 import DataManager from './components/DataManager/DataManager';
 import OEEAnalytics from './components/Analytics/OEEAnalytics';
+import ProductionLineVisualization from './components/ProductionLine/ProductionLineVisualization';
 import AlertsPanel from './components/Common/AlertsPanel';
 import ParticleBackground from './components/Common/ParticleBackground';
 import { alerts, workflows, devices, aiModels } from './data/mockData';
@@ -72,6 +73,8 @@ function App() {
         return (
           <OEEAnalytics />
         );
+      case 'production-line':
+        return <ProductionLineVisualization />;
       case 'users':
         return (
           <div className="space-y-8">

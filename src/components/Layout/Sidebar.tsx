@@ -9,7 +9,8 @@ import {
   Users,
   Bell,
   Settings,
-  BarChart3
+  BarChart3,
+  Factory
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -25,6 +26,7 @@ const navigationItems = [
   { id: 'ai', name: 'AI Manager', icon: Brain },
   { id: 'integrations', name: 'Integrations', icon: Plug },
   { id: 'analytics', name: 'OEE Analytics', icon: BarChart3 },
+  { id: 'production-line', name: 'Production Line', icon: Factory },
   { id: 'users', name: 'User Management', icon: Users },
   { id: 'alerts', name: 'Alerts', icon: Bell, badge: 3 },
 ];
