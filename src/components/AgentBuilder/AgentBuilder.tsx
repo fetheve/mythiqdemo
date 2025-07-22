@@ -91,7 +91,6 @@ export default function AgentBuilder() {
         <div className="flex border-b border-gray-700">
           {[
             { id: 'enhanced', name: 'Enhanced Demo', icon: Eye },
-            { id: 'canvas', name: 'Workflow Canvas', icon: Settings },
             { id: 'agents', name: 'My Agents', icon: Database },
           ].map((tab) => {
             const Icon = tab.icon;
