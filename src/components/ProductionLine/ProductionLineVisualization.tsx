@@ -173,6 +173,15 @@ export default function ProductionLineVisualization() {
       price: 320,
       installationTime: '2-3 hours',
       compatibility: ['painting', 'welding', 'quality']
+    },
+    {
+      id: '5',
+      name: 'Power Monitoring Kit',
+      description: 'Industrial-grade current monitoring with MQTT connectivity for energy management',
+      sensors: ['Veris Hawkeye H921/H922 Current Transducer', 'Power Quality Analyzer', 'Energy Meter', 'MQTT Gateway'],
+      price: 680,
+      installationTime: '3-5 hours',
+      compatibility: ['cnc', 'welding', 'assembly', 'painting']
     }
   ];
 
