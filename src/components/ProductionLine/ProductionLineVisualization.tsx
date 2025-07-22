@@ -61,7 +61,7 @@ export default function ProductionLineVisualization() {
       name: 'CNC Machining Center',
       type: 'cnc',
       status: 'operational',
-      position: { x: 15, y: 25 },
+      position: { x: 50, y: 15 },
       digitalizationLevel: 85,
       oee: 87.3,
       sensors: [
@@ -75,7 +75,7 @@ export default function ProductionLineVisualization() {
       name: 'Assembly Station A',
       type: 'assembly',
       status: 'operational',
-      position: { x: 45, y: 35 },
+      position: { x: 50, y: 30 },
       digitalizationLevel: 60,
       oee: 78.9,
       sensors: [
@@ -88,7 +88,7 @@ export default function ProductionLineVisualization() {
       name: 'Welding Station',
       type: 'welding',
       status: 'maintenance',
-      position: { x: 75, y: 20 },
+      position: { x: 50, y: 45 },
       digitalizationLevel: 40,
       oee: 65.2,
       sensors: [
@@ -100,7 +100,7 @@ export default function ProductionLineVisualization() {
       name: 'Quality Control',
       type: 'quality',
       status: 'operational',
-      position: { x: 45, y: 65 },
+      position: { x: 50, y: 60 },
       digitalizationLevel: 95,
       oee: 94.1,
       sensors: [
@@ -114,7 +114,7 @@ export default function ProductionLineVisualization() {
       name: 'Packaging Line',
       type: 'packaging',
       status: 'operational',
-      position: { x: 15, y: 75 },
+      position: { x: 50, y: 75 },
       digitalizationLevel: 30,
       oee: 72.6,
       sensors: [
@@ -126,7 +126,7 @@ export default function ProductionLineVisualization() {
       name: 'Paint Booth',
       type: 'painting',
       status: 'offline',
-      position: { x: 75, y: 55 },
+      position: { x: 50, y: 90 },
       digitalizationLevel: 20,
       oee: 0,
       sensors: []
@@ -292,21 +292,21 @@ export default function ProductionLineVisualization() {
                     onClick={() => setSelectedWorkCenter(workCenter)}
                   >
                     <div className={`w-16 h-16 rounded-xl border-2 flex items-center justify-center relative ${
-                      workCenter.status === 'operational' ? 'bg-green-500/20 border-green-500/50' :
-                      workCenter.status === 'maintenance' ? 'bg-amber-500/20 border-amber-500/50' :
-                      'bg-red-500/20 border-red-500/50'
+                      workCenter.status === 'operational' ? 'bg-emerald-400/30 border-emerald-400/70 shadow-lg shadow-emerald-400/20' :
+                      workCenter.status === 'maintenance' ? 'bg-amber-400/30 border-amber-400/70 shadow-lg shadow-amber-400/20' :
+                      'bg-rose-400/30 border-rose-400/70 shadow-lg shadow-rose-400/20'
                     }`}>
                       <WorkCenterIcon className="w-6 h-6 text-white" />
                       
                       {/* Sensor Count Badge */}
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg">
                         {workCenter.sensors.length}
                       </div>
 
                       {/* Digitalization Level Indicator */}
                       <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gray-600 rounded-full overflow-hidden">
                         <div 
-                          className={`h-full bg-gradient-to-r ${getDigitalizationColor(workCenter.digitalizationLevel)} transition-all duration-500`}
+                          className={`h-full bg-gradient-to-r ${getDigitalizationColor(workCenter.digitalizationLevel)} transition-all duration-500 shadow-sm`}
                           style={{ width: `${workCenter.digitalizationLevel}%` }}
                         ></div>
                       </div>
@@ -328,10 +328,11 @@ export default function ProductionLineVisualization() {
                   </marker>
                 </defs>
                 {/* Example flow arrows between work centers */}
-                <line x1="15%" y1="25%" x2="40%" y2="30%" stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6" />
-                <line x1="50%" y1="35%" x2="70%" y2="25%" stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6" />
-                <line x1="75%" y1="30%" x2="50%" y2="60%" stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6" />
-                <line x1="40%" y1="65%" x2="20%" y2="70%" stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6" />
+                <line x1="50%" y1="20%" x2="50%" y2="25%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <line x1="50%" y1="35%" x2="50%" y2="40%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <line x1="50%" y1="50%" x2="50%" y2="55%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <line x1="50%" y1="65%" x2="50%" y2="70%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <line x1="50%" y1="80%" x2="50%" y2="85%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" opacity="0.8" />
               </svg>
             </div>
           </div>
@@ -351,7 +352,7 @@ export default function ProductionLineVisualization() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm border ${getStatusColor(selectedWorkCenter.status)}`}>
+                  <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm border shadow-lg ${getStatusColor(selectedWorkCenter.status)}`}>
                     {selectedWorkCenter.status === 'operational' ? <CheckCircle className="w-3 h-3" /> : <AlertTriangle className="w-3 h-3" />}
                     <span className="capitalize">{selectedWorkCenter.status}</span>
                   </div>
@@ -369,9 +370,9 @@ export default function ProductionLineVisualization() {
 
                   <div>
                     <div className="text-gray-400 text-sm mb-2">Digitalization Progress</div>
-                    <div className="w-full bg-gray-600 rounded-full h-2">
+                    <div className="w-full bg-gray-600 rounded-full h-3 shadow-inner">
                       <div 
-                        className={`h-2 rounded-full bg-gradient-to-r ${getDigitalizationColor(selectedWorkCenter.digitalizationLevel)} transition-all duration-500`}
+                        className={`h-3 rounded-full bg-gradient-to-r ${getDigitalizationColor(selectedWorkCenter.digitalizationLevel)} transition-all duration-500 shadow-sm`}
                         style={{ width: `${selectedWorkCenter.digitalizationLevel}%` }}
                       ></div>
                     </div>
@@ -487,7 +488,7 @@ export default function ProductionLineVisualization() {
                        onClick={() => setSelectedKit(kit)}>
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-semibold text-white">{kit.name}</h3>
-                      <div className="text-2xl font-bold text-teal-400">${kit.price.toLocaleString()}</div>
+                      <div className="text-2xl font-bold text-cyan-400">${kit.price.toLocaleString()}</div>
                     </div>
 
                     <p className="text-gray-300 text-sm mb-4">{kit.description}</p>
@@ -497,7 +498,7 @@ export default function ProductionLineVisualization() {
                         <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">Included Sensors</div>
                         <div className="flex flex-wrap gap-1">
                           {kit.sensors.map((sensor, index) => (
-                            <span key={index} className="bg-gray-600 text-white text-xs px-2 py-1 rounded">
+                            <span key={index} className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-2 py-1 rounded shadow-sm">
                               {sensor}
                             </span>
                           ))}
@@ -525,11 +526,11 @@ export default function ProductionLineVisualization() {
                           }
                         }}
                         disabled={!selectedWorkCenter || !kit.compatibility.includes(selectedWorkCenter?.type || '')}
-                        className="flex-1 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg text-sm transition-colors"
+                        className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 shadow-lg"
                       >
                         Install Kit
                       </button>
-                      <button className="bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                      <button className="bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 shadow-lg">
                         <Info className="w-4 h-4" />
                       </button>
                     </div>
@@ -538,10 +539,10 @@ export default function ProductionLineVisualization() {
               </div>
 
               {selectedWorkCenter && (
-                <div className="mt-6 p-4 bg-teal-500/10 border border-teal-500/20 rounded-lg">
+                <div className="mt-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-400/30 rounded-lg shadow-lg">
                   <div className="flex items-center space-x-2 mb-2">
-                    <Info className="w-4 h-4 text-teal-400" />
-                    <span className="text-teal-400 font-medium">Selected Work Center: {selectedWorkCenter.name}</span>
+                    <Info className="w-4 h-4 text-cyan-400" />
+                    <span className="text-cyan-400 font-medium">Selected Work Center: {selectedWorkCenter.name}</span>
                   </div>
                   <p className="text-gray-300 text-sm">
                     Compatible kits are highlighted. Installation will be scheduled during the next maintenance window.
