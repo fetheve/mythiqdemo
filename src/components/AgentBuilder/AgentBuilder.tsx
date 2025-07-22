@@ -114,7 +114,6 @@ export default function AgentBuilder() {
 
         <div className={activeTab === 'enhanced' ? '' : 'p-6'}>
           {activeTab === 'enhanced' && <EnhancedAgentDemo />}
-          {activeTab === 'canvas' && <WorkflowCanvas />}
           {activeTab === 'agents' && <MyAgents />}
         </div>
       </div>

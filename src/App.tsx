@@ -10,6 +10,7 @@ import OEEAnalytics from './components/Analytics/OEEAnalytics';
 import ProductionLineVisualization from './components/ProductionLine/ProductionLineVisualization';
 import AlertsPanel from './components/Common/AlertsPanel';
 import ParticleBackground from './components/Common/ParticleBackground';
+import WorkflowCanvas from './components/AgentBuilder/WorkflowCanvas';
 import { alerts, workflows, devices, aiModels } from './data/mockData';
 import { Database, Workflow, Plug, Users, BarChart3, Settings } from 'lucide-react';
 
@@ -26,6 +27,20 @@ function App() {
         return <AIManager />;
       case 'workflows':
         return <AgentBuilder />;
+      case 'workflow-builder':
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-white mb-2">Workflow Builder</h1>
+              <p className="text-gray-400">Visual workflow designer for automation and process orchestration</p>
+            </div>
+            <div className="bg-gray-800 rounded-xl border border-gray-700">
+              <div className="p-6">
+                <WorkflowCanvas />
+              </div>
+            </div>
+          </div>
+        );
       case 'data':
         return <DataManager />;
       case 'alerts':

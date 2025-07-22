@@ -25,6 +25,7 @@ const navigationItems = [
   { id: 'data', name: 'Data Manager', icon: Database },
   { id: 'ai', name: 'AI Manager', icon: Brain },
   { id: 'workflows', name: 'Agent Builder', icon: Workflow },
+  { id: 'workflow-builder', name: 'Workflow Builder', icon: Settings },
   { id: 'integrations', name: 'Integrations', icon: Plug },
   { id: 'analytics', name: 'OEE Analytics', icon: BarChart3 },
   { id: 'users', name: 'User Management', icon: Users },
