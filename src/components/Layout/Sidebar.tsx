@@ -19,12 +19,12 @@ interface SidebarProps {
 }
 
 const navigationItems = [
-  { id: 'workflows', name: 'Agent Builder', icon: Workflow },
   { id: 'dashboard', name: 'Dashboard', icon: LayoutDashboard },
   { id: 'production-line', name: 'Production Line', icon: Factory },
   { id: 'devices', name: 'Device Manager', icon: HardDrive },
   { id: 'data', name: 'Data Manager', icon: Database },
   { id: 'ai', name: 'AI Manager', icon: Brain },
+  { id: 'workflows', name: 'Agent Builder', icon: Workflow },
   { id: 'integrations', name: 'Integrations', icon: Plug },
   { id: 'analytics', name: 'OEE Analytics', icon: BarChart3 },
   { id: 'users', name: 'User Management', icon: Users },
