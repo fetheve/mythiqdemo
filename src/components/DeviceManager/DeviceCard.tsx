@@ -157,7 +157,7 @@ export default function DeviceCard({ device }: DeviceCardProps) {
         <div className="flex items-center space-x-2">
           <button className="btn btn-ghost btn-sm">
             <Zap className="w-4 h-4" />
-            Monitor
+            {device.status === 'offline' && device.lastUpdate === 'Pending Installation' ? 'Install' : 'Monitor'}
           </button>
           <button className="btn btn-secondary btn-sm">
             <Settings className="w-4 h-4" />
