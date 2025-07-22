@@ -139,7 +139,7 @@ export default function ProductionLineVisualization() {
       name: 'Basic Digitalization Kit',
       description: 'Essential sensors for basic monitoring and data collection',
       sensors: ['Temperature Sensor', 'Vibration Monitor', 'Proximity Sensor'],
-      price: 2500,
+      price: 250,
       installationTime: '2-4 hours',
       compatibility: ['cnc', 'assembly', 'welding']
     },
@@ -148,7 +148,7 @@ export default function ProductionLineVisualization() {
       name: 'Advanced Vision Kit',
       description: 'Computer vision system for quality control and defect detection',
       sensors: ['4K Vision Camera', 'LED Lighting System', 'Edge Processing Unit'],
-      price: 8500,
+      price: 850,
       installationTime: '1-2 days',
       compatibility: ['quality', 'assembly', 'packaging']
     },
@@ -157,7 +157,7 @@ export default function ProductionLineVisualization() {
       name: 'Predictive Maintenance Kit',
       description: 'Comprehensive monitoring for predictive maintenance',
       sensors: ['Vibration Sensor', 'Temperature Array', 'Current Monitor', 'Oil Analysis Sensor'],
-      price: 5200,
+      price: 520,
       installationTime: '4-6 hours',
       compatibility: ['cnc', 'welding', 'painting']
     },
@@ -166,7 +166,7 @@ export default function ProductionLineVisualization() {
       name: 'Environmental Monitoring Kit',
       description: 'Monitor environmental conditions and compliance',
       sensors: ['Air Quality Sensor', 'Humidity Monitor', 'Noise Level Meter', 'Pressure Sensor'],
-      price: 3200,
+      price: 320,
       installationTime: '2-3 hours',
       compatibility: ['painting', 'welding', 'quality']
     }
