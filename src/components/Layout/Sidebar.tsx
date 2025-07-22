@@ -21,12 +21,12 @@ interface SidebarProps {
 const navigationItems = [
   { id: 'workflows', name: 'Agent Builder', icon: Workflow },
   { id: 'dashboard', name: 'Dashboard', icon: LayoutDashboard },
+  { id: 'production-line', name: 'Production Line', icon: Factory },
   { id: 'devices', name: 'Device Manager', icon: HardDrive },
   { id: 'data', name: 'Data Manager', icon: Database },
   { id: 'ai', name: 'AI Manager', icon: Brain },
   { id: 'integrations', name: 'Integrations', icon: Plug },
   { id: 'analytics', name: 'OEE Analytics', icon: BarChart3 },
-  { id: 'production-line', name: 'Production Line', icon: Factory },
   { id: 'users', name: 'User Management', icon: Users },
   { id: 'alerts', name: 'Alerts', icon: Bell, badge: 3 },
 ];
