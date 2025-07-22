@@ -61,7 +61,7 @@ export default function ProductionLineVisualization() {
       name: 'CNC Machining Center',
       type: 'cnc',
       status: 'operational',
-      position: { x: 50, y: 10 },
+      position: { x: 15, y: 50 },
       digitalizationLevel: 85,
       oee: 87.3,
       sensors: [
@@ -75,7 +75,7 @@ export default function ProductionLineVisualization() {
       name: 'Assembly Station A',
       type: 'assembly',
       status: 'operational',
-      position: { x: 50, y: 25 },
+      position: { x: 30, y: 50 },
       digitalizationLevel: 60,
       oee: 78.9,
       sensors: [
@@ -88,7 +88,7 @@ export default function ProductionLineVisualization() {
       name: 'Welding Station',
       type: 'welding',
       status: 'maintenance',
-      position: { x: 50, y: 40 },
+      position: { x: 45, y: 50 },
       digitalizationLevel: 40,
       oee: 65.2,
       sensors: [
@@ -100,7 +100,7 @@ export default function ProductionLineVisualization() {
       name: 'Quality Control',
       type: 'quality',
       status: 'operational',
-      position: { x: 50, y: 55 },
+      position: { x: 60, y: 50 },
       digitalizationLevel: 95,
       oee: 94.1,
       sensors: [
@@ -114,7 +114,7 @@ export default function ProductionLineVisualization() {
       name: 'Packaging Line',
       type: 'packaging',
       status: 'operational',
-      position: { x: 50, y: 70 },
+      position: { x: 75, y: 50 },
       digitalizationLevel: 30,
       oee: 72.6,
       sensors: [
@@ -126,7 +126,7 @@ export default function ProductionLineVisualization() {
       name: 'Paint Booth',
       type: 'painting',
       status: 'offline',
-      position: { x: 50, y: 85 },
+      position: { x: 90, y: 50 },
       digitalizationLevel: 20,
       oee: 0,
       sensors: []
@@ -282,7 +282,7 @@ export default function ProductionLineVisualization() {
                 return (
                   <div
                     key={workCenter.id}
-                    className={`absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-110 ${
+                    className={`absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-105 ${
                       selectedWorkCenter?.id === workCenter.id ? 'scale-110 z-10' : ''
                     }`}
                     style={{
@@ -291,20 +291,20 @@ export default function ProductionLineVisualization() {
                     }}
                     onClick={() => setSelectedWorkCenter(workCenter)}
                   >
-                    <div className={`w-20 h-20 rounded-xl border-2 flex items-center justify-center relative ${
+                    <div className={`w-16 h-16 rounded-xl border-2 flex items-center justify-center relative ${
                       workCenter.status === 'operational' ? 'bg-emerald-400/30 border-emerald-400/70 shadow-lg shadow-emerald-400/20' :
                       workCenter.status === 'maintenance' ? 'bg-amber-400/30 border-amber-400/70 shadow-lg shadow-amber-400/20' :
                       'bg-rose-400/30 border-rose-400/70 shadow-lg shadow-rose-400/20'
                     }`}>
-                      <WorkCenterIcon className="w-8 h-8 text-white" />
+                      <WorkCenterIcon className="w-6 h-6 text-white" />
                       
                       {/* Sensor Count Badge */}
-                      <div className="absolute -top-3 -right-3 w-7 h-7 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg">
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg">
                         {workCenter.sensors.length}
                       </div>
 
                       {/* Digitalization Level Indicator */}
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-2 bg-gray-600 rounded-full overflow-hidden">
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-2 bg-gray-600 rounded-full overflow-hidden">
                         <div 
                           className={`h-full bg-gradient-to-r ${getDigitalizationColor(workCenter.digitalizationLevel)} transition-all duration-500 shadow-sm`}
                           style={{ width: `${workCenter.digitalizationLevel}%` }}
@@ -313,7 +313,7 @@ export default function ProductionLineVisualization() {
                     </div>
                     
                     <div className="text-center mt-4">
-                      <div className="text-sm font-medium text-white truncate max-w-24">{workCenter.name}</div>
+                      <div className="text-xs font-medium text-white truncate max-w-20">{workCenter.name}</div>
                       <div className="text-xs text-gray-400">{workCenter.digitalizationLevel}% Digital</div>
                     </div>
                   </div>
@@ -334,17 +334,17 @@ export default function ProductionLineVisualization() {
                     </feMerge>
                   </filter>
                 </defs>
-                {/* Flow arrows between work centers with proper spacing */}
-                <line x1="50%" y1="15%" x2="50%" y2="20%" stroke="#22d3ee" strokeWidth="4" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.9" />
-                <line x1="50%" y1="30%" x2="50%" y2="35%" stroke="#22d3ee" strokeWidth="4" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.9" />
-                <line x1="50%" y1="45%" x2="50%" y2="50%" stroke="#22d3ee" strokeWidth="4" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.9" />
-                <line x1="50%" y1="60%" x2="50%" y2="65%" stroke="#22d3ee" strokeWidth="4" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.9" />
-                <line x1="50%" y1="75%" x2="50%" y2="80%" stroke="#22d3ee" strokeWidth="4" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.9" />
+                {/* Horizontal flow arrows between work centers */}
+                <line x1="22%" y1="50%" x2="28%" y2="50%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.8" />
+                <line x1="37%" y1="50%" x2="43%" y2="50%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.8" />
+                <line x1="52%" y1="50%" x2="58%" y2="50%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.8" />
+                <line x1="67%" y1="50%" x2="73%" y2="50%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.8" />
+                <line x1="82%" y1="50%" x2="88%" y2="50%" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" filter="url(#glow)" opacity="0.8" />
                 
                 {/* Animated flow indicators */}
                 <circle r="3" fill="#22d3ee" opacity="0.8">
-                  <animateMotion dur="3s" repeatCount="indefinite" path="M 50,60 L 50,240 L 50,320 L 50,400 L 50,480">
-                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M 60,192 L 120,192 L 180,192 L 240,192 L 300,192 L 360,192">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="5s" repeatCount="indefinite"/>
                   </animateMotion>
                 </circle>
               </svg>
