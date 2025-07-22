@@ -15,7 +15,7 @@ import { alerts, workflows, devices, aiModels } from './data/mockData';
 import { Database, Workflow, Plug, Users, BarChart3, Settings } from 'lucide-react';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('workflows');
+  const [activeSection, setActiveSection] = useState('dashboard');
 
   const renderContent = () => {
     switch (activeSection) {
